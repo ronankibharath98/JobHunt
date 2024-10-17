@@ -29,6 +29,7 @@ const PostJob = () => {
     const navigate = useNavigate();
 
     const { companies } = useSelector(store => store.company);
+    
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
     };
@@ -152,11 +153,11 @@ const PostJob = () => {
                                         <SelectValue placeholder="Select a Company" />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectGroup key={company._id}>
+                                        <SelectGroup>
                                             {
                                                 companies.map((company) => {
                                                     return (
-                                                        <SelectItem value={company?.name?.toLowerCase()}>{company.name}</SelectItem>
+                                                        <SelectItem key={company._id} value={company?.name?.toLowerCase()}>{company.name}</SelectItem>
                                                     )
                                                 })
                                             }
